@@ -1,6 +1,6 @@
-const express = require('express');
-const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
+import express from 'express';
+import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 
 const cartsRouter = express.Router();
 
@@ -33,4 +33,4 @@ cartsRouter.post('/:cid/product/:pid', (req, res) => {
   }
 });
 
-module.exports = cartsRouter;
+export default cartsRouter;

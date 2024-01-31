@@ -1,0 +1,29 @@
+{{!-- <!-- realTimeProducts.handlebars -->
+
+<form id="productoForm">
+    <!-- Campos del formulario para la creación de productos -->
+    <button type="submit">Agregar Producto</button>
+</form>
+
+<ul id="listaProductos">
+    <!-- Lista de productos -->
+</ul>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+
+    // Evento para recibir datos actualizados y actualizar la lista de productos
+    socket.on('actualizarProductos', (data) => {
+        // Lógica para actualizar la lista de productos en la vista
+        const listaProductos = document.getElementById('listaProductos');
+        // Actualiza la lista con los datos recibidos
+    });
+
+    // Evento para manejar la creación de productos desde el formulario
+    document.getElementById('productoForm').addEventListener('submit', (event) => {
+        event.preventDefault();
+        const nuevoProducto = /* Obtener datos del formulario */;
+        socket.emit('crearProducto', nuevoProducto);
+    });
+</script> --}}

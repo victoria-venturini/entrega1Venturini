@@ -1,10 +1,10 @@
-const express = require('express');
-const fs = require('fs');
-const { v4: uuidv4 } = require('uuid');
-
-
-
+import express from 'express';
+import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
+// import ProductManager from './productManager.js';
+// const productManager = new ProductManager('./products.json'); 
 const productsRouter = express.Router();
+const products = []
 
 productsRouter.get('/', (req, res) => {
   const products = JSON.parse(fs.readFileSync('products.json'));
@@ -22,6 +22,9 @@ productsRouter.post('/', (req, res) => {
   fs.writeFileSync('products.json', JSON.stringify(products));
   res.json(newProduct);
 });
+
+
+
 productsRouter.put('/:pid', (req, res) => {
   const products = JSON.parse(fs.readFileSync('products.json'));
   const productIndex = products.findIndex(p => p.id === req.params.pid);
@@ -46,4 +49,4 @@ productsRouter.delete('/:pid', (req, res) => {
   }
 });
 
-module.exports = productsRouter;
+export default productsRouter;
