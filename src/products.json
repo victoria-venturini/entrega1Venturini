@@ -1,0 +1,62 @@
+[[
+    {
+      "title": "Producto 1",
+      "code": "1234",
+      "description": "remera roja",
+      "price": "24.99",
+      "id": "1",
+      "category": "clothing",
+      "thumbnail": "path/to/image1.jpg",
+      "stock": "90"
+    },
+    {
+      "title": "Producto 2",
+      "code": "12345",
+      "description": "pantalon negro",
+      "price": "170",
+      "id": "2",
+      "category": "clothing",
+      "thumbnail": "path/to/image1.jpg",
+      "stock": "50"
+    },
+    {
+      "title": "Producto 3",
+      "code": "1234",
+      "description": "remera roja",
+      "price": "150",
+      "id": "3",
+      "category": "clothing",
+      "thumbnail": "path/to/image1.jpg",
+      "stock": "100"
+    },
+    {
+      "title": "Producto 4",
+      "code": "12345",
+      "description": "pantalon negro",
+      "price": "170",
+      "id": "4",
+      "category": "clothing",
+      "thumbnail": "path/to/image1.jpg",
+      "stock": "50"
+    },
+    {
+      "title": "Producto 5",
+      "code": "1234",
+      "description": "remera roja",
+      "price": "150",
+      "id": "5",
+      "category": "clothing",
+      "thumbnail": "path/to/image1.jpg",
+      "stock": "100"
+    },
+    {
+      "title": "Producto 6",
+      "code": "12345",
+      "description": "pantalon negro",
+      "price": "170",
+      "id": "6",
+      "category": "clothing",
+      "thumbnail": "path/to/image1.jpg",
+      "stock": "50"
+    }
+  ]]
