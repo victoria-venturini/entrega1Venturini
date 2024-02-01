@@ -1,46 +1,44 @@
-const express = require('express');
-const handlebars = require('express-handlebars');
-const http = require('http');
-const { Server } = require('socket.io');
-const setupSocketIO = require('./routes/viewsRouter.js');
+const express = require("express");
+const socketIO = require("socket.io");
+const handlebars = require("express-handlebars");
 
 const app = express();
-const PORT = 8080;
-const server = http.createServer(app);
-const io = new Server(server);
+app.engine("handlebars", handlebars.engine());
+app.set("view engine", "handlebars");
 
-app.engine("handlebars", handlebars.engine())
-app.set('view engine', 'handlebars');
+const server = require("http").createServer(app);
+const io = socketIO(server);
 
-// Configurar eventos de conexión en Socket.io
-io.on('connection', (socket) => {
-  console.log('A user connected');
+let products = [
+  { id: 1, name: "Product 1", price: 100 },
+  { id: 2, name: "Product 2", price: 200 },
+  { id: 3, name: "Product 3", price: 300 },
+]; 
 
-  // Manejar eventos personalizados, por ejemplo 'product'
-  socket.on('product', (data) => {
-    console.log('Received product:', data);
+io.on("connection", (socket) => {
+  console.log("a user connected");
 
-    // Emitir el evento 'product' a todos los clientes conectados
-    io.emit('renderProduct', data);
+  // Enviar la lista de productos a la vista en tiempo real
+  socket.emit("products", products);
+
+  // Manejar la creación de un producto
+  socket.on("createProduct", (product) => {
+    console.log("createProduct", product);
+    products.push(product);
+    io.emit("products", products); // Actualizar la lista de productos para todos los clientes
   });
 
-  // Manejar eventos de desconexión
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
+  // Manejar la eliminación de un producto
+  socket.on("deleteProduct", (productId) => {
+    products = products.filter((product) => product.id !== productId);
+    io.emit("products", products); // Actualizar la lista de productos para todos los clientes
   });
 });
 
-// Configurar las rutas y pasar 'io' a setupSocketIO
-app.use('/', setupSocketIO(io));
+// Rutas de Express para renderizar las vistas
+app.get("/", (req, res) => res.render("./layouts/main", { products }));
+app.get("/realtimeproducts", (req, res) =>
+  res.render("./layouts/realTimeProducts", { products })
+);
 
-// Escuchar el evento 'renderProduct' y actualizar el HTML en el cliente
-app.get('/socket.io/socket.io.js', (req, res) => {
-  res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js');
-});
-app.get('/socket.io/socket.io.js.map', (req, res) => {
-  res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js.map');
-});
-
-server.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+server.listen(3000, () => console.log("listening on *:3000"));

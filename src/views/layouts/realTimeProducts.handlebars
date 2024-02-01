@@ -1,24 +1,20 @@
-<!-- realTimeProducts.handlebars -->
-<h1>Productos en tiempo real</h1>
-<ul id="products">
-</ul>
-<form action="/product" method="post">
-  <input type="text" name="product" required>
- <input type="text" name="code" required>
-  <input type="text" name="description" required>
-  <input type="number" name="price" required>
-  <input type="number" name="id" required>
-  <input type="text" name="category" required>
-   <input type="number" name="stock" required>
-  <button type="submit">Agregar producto</button>
-</form>
+<html>
+  <head>
+    <title>Productos en tiempo real</title>
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h1>Lista de productos (en tiempo real)</h1>
+    <ul id="products">
+   
+    </ul>
 
-<script src="/socket.io/socket.io.js"></script>
-<script>
-  const socket = io();
-  socket.on('product', (product) => {
-    const li = document.createElement('li');
-    li.textContent = product;
-    document.getElementById('products').appendChild(li);
-  });
-</script>
+    <script>
+      var socket = io(); socket.on('products', function(products) { var
+      productsList = document.getElementById('products'); productsList.innerHTML
+      = ''; products.forEach(function(product) { var li =
+      document.createElement('li'); li.textContent = `${product.name} -
+      ${product.price}`; productsList.appendChild(li); }); });
+    </script>
+  </body>
+</html>
