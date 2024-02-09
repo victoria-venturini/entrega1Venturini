@@ -13,6 +13,16 @@
       <label for="name">Nombre del producto:</label><br />
       <input type="text" id="name" name="name" /><br />
       <label for="price">Precio del producto:</label><br />
+      <input type="text" id="price" name="price" /><br /> 
+      <label for="name">Categoria:</label><br />
+      <input type="text" id="category" name="category" /><br /> 
+       <label for="name">Descripcion:</label><br />
+      <input type="text" id="description" name="description" /><br />
+        <label for="name">Codigo:</label><br />
+      <input type="text" id="code" name="code" /><br />
+        <label for="name">Stock:</label><br />
+      <input type="text" id="stock" name="stock" /><br />
+      <label for="price">Precio del producto:</label><br />
       <input type="text" id="price" name="price" /><br />
       <input type="submit" value="Agregar producto" />
     </form>
@@ -27,4 +37,5 @@
   event.target.elements.price.value; socket.emit('createProduct', { name, price
   }); event.target.elements.name.value = ''; event.target.elements.price.value =
   ''; });
+  
 </script>
