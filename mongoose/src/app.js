@@ -1,6 +1,9 @@
 import express from "express"
 import mongoose from "mongoose"
 import userRouter from "./routes/users.router.js"
+import productRouter from "./routes/products.router.js"
+import cartRouter from "./routes/carts.router.js"
+import messageRouter from "./routes/messages.router.js"
 
 const app = express()
 const PORT = 8080
@@ -22,3 +25,6 @@ mongoose.connect("mongodb+srv://vventurini:16371@clustercoder.szloyof.mongodb.ne
 
     
 app.use("/api/users", userRouter)
+app.use("/api/products", productRouter)
+app.use("/api/carts", cartRouter)
+app.use("/api/messages", messageRouter)
