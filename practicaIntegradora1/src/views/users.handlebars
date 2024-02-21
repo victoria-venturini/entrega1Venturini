@@ -1,0 +1,27 @@
+<form id="login" method="post">
+  <input type="nombre" name="nombre" value="" placeholder="Nombre">
+  <br><br>
+  <input type="apellido" name="apellido" value="" placeholder="apellido">
+  <br><br>
+   <input type="email" name="email" value="" placeholder="email">
+  <input type="submit" value="Login">
+</form>
+
+<script type="text/javascript">
+  const formLogin = document.querySelector('#login')
+  const formData = new FormData(formLogin)
+
+  formLogin.addEventListener('submit', event => {
+   router.post("/api/users", async (req, res) => {
+    let { nombre, apellido, email } = req.body
+
+    if (!nombre || !apellido || !email) {
+        res.send({ status: "error", error: "Faltan datos" })
+    }
+
+    let result = await userModel.create({ nombre, apellido, email })
+    res.send({ result: "success", payload: result })
+})
+    })
+  
+</script>

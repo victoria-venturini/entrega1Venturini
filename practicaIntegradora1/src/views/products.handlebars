@@ -1,14 +1,49 @@
 <html>
   <head>
-    <title>Productos en tiempo real</title>
-   
+    <title>Home</title>
   </head>
   <body>
-    <h1>Lista de productos (en tiempo real)</h1>
-    <ul id="products">
-   
+    <h1>Lista de productos</h1>
+    <h2>Agregar un producto al carrito</h2>
+    <ul>
+      {{#each products}}
+        <li>{{this.name}} - {{this.price}}</li>
+      {{/each}}
     </ul>
-
-    
+    <form id="product-form">
+      <label for="name">Nombre del producto:</label><br />
+      <input type="text" id="name" name="name" /><br />
+      <label for="price">Precio del producto:</label><br />
+      <input type="text" id="price" name="price" /><br /> 
+      <label for="name">Categoria:</label><br />
+      <input type="text" id="category" name="category" /><br /> 
+       <label for="name">Descripcion:</label><br />
+      <input type="text" id="description" name="description" /><br />
+        <label for="name">Codigo:</label><br />
+      <input type="text" id="code" name="code" /><br />
+        <label for="name">Stock:</label><br />
+      <input type="text" id="stock" name="stock" /><br />
+      <label for="price">Precio del producto:</label><br />
+      <input type="text" id="price" name="price" /><br />
+      <input type="submit" value="Agregar producto" />
+    </form>
   </body>
 </html>
+
+<script type="text/javascript">
+import { Router } from "express"
+import productModel from "../../daos/model/product.model.js"
+
+const router = Router()
+
+router.get("/products", async (req, res) => {
+    try {
+        let products = await productModel.find()
+        res.send({ result: "success", payload: products })
+    } catch (error) {
+
+    }
+    
+})
+
+</script>

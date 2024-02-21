@@ -4,6 +4,7 @@ import userRouter from "./routes/users.router.js"
 import productRouter from "./routes/products.router.js"
 import cartRouter from "./routes/carts.router.js"
 import messageRouter from "./routes/messages.router.js"
+import viewsRouter from "./routes/views.router.js"
 import handlebars from "express-handlebars"
 
 
@@ -36,8 +37,18 @@ app.use("/api/users", userRouter)
 app.use("/api/products", productRouter)
 app.use("/api/carts", cartRouter)
 app.use("/api/messages", messageRouter)
+app.use('/', viewsRouter);
 
-app.get("/", (req, res) => res.render("./layouts/main"));
-app.get("/api/products", (req, res) =>
-  res.render("./views/products"));
-  
+app.get("/", (req, res) => res.render("users"));
+
+app.get("/products", (req, res) =>
+  res.render("products"));
+
+  app.get('/users', (req, res) => {
+    res.render('users')
+  })
+
+  app.get('/messages', (req, res) => {
+    res.render('messages')
+  })
+
