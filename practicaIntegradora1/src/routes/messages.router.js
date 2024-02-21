@@ -1,5 +1,5 @@
 import { Router } from "express"
-import messageModel from "../../daos/model/message.model.js"
+import messageModel from "../daos/model/message.model.js"
 
 const router = Router()
 

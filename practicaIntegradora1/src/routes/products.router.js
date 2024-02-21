@@ -1,5 +1,5 @@
 import { Router } from "express"
-import productModel from "../../daos/model/product.model.js"
+import productModel from "../daos/model/product.model.js"
 
 const router = Router()
 

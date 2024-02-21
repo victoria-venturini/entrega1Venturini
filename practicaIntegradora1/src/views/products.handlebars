@@ -4,13 +4,18 @@
   </head>
   <body>
     <h1>Lista de productos</h1>
+    
+{{#each products}}
+  <p>{{title}} - {{price}}</p>
+{{/each}}
+
     <h2>Agregar un producto al carrito</h2>
     <ul>
       {{#each products}}
         <li>{{this.name}} - {{this.price}}</li>
       {{/each}}
     </ul>
-    <form id="product-form">
+    <form id="product-form" action="submit" method="POST">
       <label for="name">Nombre del producto:</label><br />
       <input type="text" id="name" name="name" /><br />
       <label for="price">Precio del producto:</label><br />
