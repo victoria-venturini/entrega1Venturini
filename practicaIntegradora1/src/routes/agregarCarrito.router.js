@@ -1,18 +1,13 @@
-import { Router } from "express"
+import express from 'express';
 import cartModel from "../daos/model/cart.model.js"
 
-const router = Router()
+const router = express.Router()
 
-router.get("/", async (req, res) => {
-    try {
-        let carts = await cartModel.find()
-        res.send({ result: "success", payload: carts })
-    } catch (error) {
+router.get("/", (req, res) =>
+  res.render("carts"));
 
-    }
-})
 
-router.post("/", async (req, res) => {
+  router.post("/", async (req, res) => {
     let { products, id, quantity } = req.body
 
     if (!products || !id || !quantity) {
@@ -42,4 +37,4 @@ router.delete("/:uid", async (req, res) => {
     res.send({ result: "success", payload: result })
 })
 
-export default router
+  export default router;

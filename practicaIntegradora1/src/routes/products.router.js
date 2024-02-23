@@ -14,13 +14,13 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
-    let { nombre, categoria, precio } = req.body
+    let { title, description,code,price,status,stock,category,thumbnail } = req.body
 
-    if (!nombre || !categoria || !precio) {
+    if (!title|| !description || !code || !price ||!status || !stock || !category ||!thumbnail) {
         res.send({ status: "error", error: "Faltan datos" })
     }
 
-    let result = await productModel.create({ nombre, categoria, precio })
+    let result = await productModel.create({ title, description, code, price, status, stock, category, thumbnail })
     res.send({ result: "success", payload: result })
 })
 
@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 router.put("/:uid", async (req, res) => {
     let { uid } = req.params
     let productToReplace = req.body
-    if (!productToReplace.nombre || !productToReplace.categoria || !productToReplace.precio) {
+    if (!productToReplace.title || !productToReplace.description || !productToReplace.code || !productToReplace.price || !productToReplace.status || !productToReplace.stock || !productToReplace.category || !productToReplace.thumbnail) {
         res.send({ status: "error", error: "Faltan datos" })
     }
 

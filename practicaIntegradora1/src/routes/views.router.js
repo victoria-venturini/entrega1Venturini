@@ -15,5 +15,8 @@ router.get("/products", (req, res) =>
   router.get('/messages', (req, res) => {
     res.render('messages')
   })
+  router.get('/carts', (req, res) => {
+    res.render('carts')
+  })
 
 export default router;

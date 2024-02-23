@@ -14,22 +14,24 @@
       {{#each products}}
         <li>{{this.name}} - {{this.price}}</li>
       {{/each}}
-    </ul>
+    </ul> 
     <form id="product-form" action="submit" method="POST">
-      <label for="name">Nombre del producto:</label><br />
-      <input type="text" id="name" name="name" /><br />
+      <label for="title"> Titulo del producto:</label><br />
+      <input type="text" id="title" name="title" /><br />
+       <label for="description">Descripcion:</label><br />
+      <input type="text" id="description" name="description" /><br />
+       <label for="code">Codigo:</label><br />
+      <input type="text" id="code" name="code" /><br />
       <label for="price">Precio del producto:</label><br />
       <input type="text" id="price" name="price" /><br /> 
-      <label for="name">Categoria:</label><br />
-      <input type="text" id="category" name="category" /><br /> 
-       <label for="name">Descripcion:</label><br />
-      <input type="text" id="description" name="description" /><br />
-        <label for="name">Codigo:</label><br />
-      <input type="text" id="code" name="code" /><br />
-        <label for="name">Stock:</label><br />
+      <label for="status">Estado del producto:</label><br />
+      <input type="text" id="status" name="status" /><br /> 
+      <label for="stock">Stock:</label><br />
       <input type="text" id="stock" name="stock" /><br />
-      <label for="price">Precio del producto:</label><br />
-      <input type="text" id="price" name="price" /><br />
+      <label for="category">Categoria:</label><br />
+      <input type="text" id="category" name="category" /><br /> 
+      <label for="thumbnail">URL de la imagen:</label><br />
+      <input type="text" id="thumbnail" name="thumbnail" /><br />
       <input type="submit" value="Agregar producto" />
     </form>
   </body>

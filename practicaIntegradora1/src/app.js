@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import userRouter from "./routes/users.router.js"
 import productRouter from "./routes/products.router.js"
 import cartRouter from "./routes/carts.router.js"
+import agregarCarrito from "./routes/agregarCarrito.router.js"
 import messageRouter from "./routes/messages.router.js"
 import viewsRouter from "./routes/views.router.js"
 import handlebars from "express-handlebars"
@@ -47,6 +48,7 @@ mongoose.connect("mongodb+srv://vventurini:16371@clustercoder.szloyof.mongodb.ne
 app.use("/api/users", userRouter)
 app.use("/api/products", productRouter)
 app.use("/api/carts", cartRouter)
+app.use("/carts", agregarCarrito)
 app.use("/api/messages", messageRouter)
 app.use('/', viewsRouter);
 
@@ -54,6 +56,9 @@ app.get("/", (req, res) => res.render("users"));
 
 app.get("/products", (req, res) =>
   res.render("products"));
+
+  app.get("/carts", (req, res) =>
+  res.render("carts"));
 
   app.get('/users', (req, res) => {
     res.render('users')

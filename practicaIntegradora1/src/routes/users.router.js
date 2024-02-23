@@ -13,13 +13,13 @@ router.get("/", async (req, res) => {
 })
 
 router.post("/", async (req, res) => {
-    let { nombre, apellido, email } = req.body
+    let { first_name, last_name, email, gender } = req.body
 
-    if (!nombre || !apellido || !email) {
+    if ( !first_name || !last_name || !email || !gender) {
         res.send({ status: "error", error: "Faltan datos" })
     }
 
-    let result = await userModel.create({ nombre, apellido, email })
+    let result = await userModel.create({ first_name, last_name, email, gender })
     res.send({ result: "success", payload: result })
 })
 
